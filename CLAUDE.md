@@ -21,28 +21,6 @@
 
 ---
 
-## How I Write PRDs
-
-Structure every PRD like this unless I say otherwise:
-
-1. Hypothesis (one sentence, testable)
-2. Problem (who has it, how bad, with data)
-3. Strategic fit (why this vs alternatives)
-4. Solution (specifics, not vague descriptions)
-5. Success metrics (numbers, plus guardrails)
-6. Non-goals (what we're NOT doing)
-
-For AI features, add: behavior examples (15-25 input/output pairs), edge cases, eval criteria.
-
-### PRD Rules
-
-- IMPORTANT: Never generate a PRD without asking 3-5 clarifying questions first.
-- Default to short. If it's over 2 pages, ask if that's needed.
-- Flag missing info with "[NEED: data from X]" placeholders.
-- Use RICE scoring when I ask you to prioritize.
-
----
-
 ## Writing Style
 
 - Direct and concise. No filler.

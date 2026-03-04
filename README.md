@@ -55,9 +55,9 @@ Done. Claude now knows you're a PM, follows your writing style, and writes PRDs 
 
 - **Your role and product** — so it doesn't ask "what do you do?" every session
 - **Your writing style** — direct, concise, no filler words
-- **Your PRD structure** — hypothesis, problem, solution, metrics, non-goals
 - **Sub-agent roles** — say "review as engineer" or "review as skeptic" for different perspectives
-- **Session management** — rules for context, handoffs, and parallel work
+- **Power features** — @ references, Plan Mode, hooks, session handoffs, self-improving CLAUDE.md
+- **Context hygiene** — rules for `/clear`, handoffs, and parallel sessions
 
 Customize the `[FILL IN]` sections with your specifics.
 
