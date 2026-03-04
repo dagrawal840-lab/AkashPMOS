@@ -1,70 +1,92 @@
 # PM Context
 
-- Role: [FILL IN] (e.g., Senior PM, B2B SaaS)
+- Role: [FILL IN]
 - Company: [FILL IN]
 - Product: [FILL IN]
 - Target users: [FILL IN]
-- Current focus: [FILL IN] (e.g., Q1: mobile app launch)
+- Current focus: [FILL IN]
 - Primary metric: [FILL IN]
-- Guardrails: [FILL IN] (e.g., churn rate, latency)
+- Guardrails: [FILL IN]
 - OKRs: [FILL IN]
-- Terminology: [FILL IN] (e.g., "Tiger team" = cross-functional sprint, "P0" = drop everything)
+- Terminology: [FILL IN]
 
 ---
 
 ## Writing Rules
 
-- Direct and concise. No filler. Active voice. Short paragraphs.
-- Lead with the ask or recommendation, then context.
-- Match the audience: casual for Slack, structured for docs, precise for specs.
+- Direct, concise, active voice. No filler.
+- Lead with the recommendation, then context.
+- Audience-match: casual for Slack, structured for docs, precise for specs.
 - Banned words: delve, landscape, synergy, leverage, robust, streamline, cutting-edge.
-- Flag missing info with `[NEED: data from X]` — never fabricate data, quotes, or metrics.
-- Use RICE scoring when I ask to prioritize.
+- Never fabricate data, quotes, or metrics. Use `[NEED: data from X]` for gaps.
 
 ---
 
 ## Sub-Agent Roles
 
-When I say "review as [role]," adopt that perspective fully:
+When I say "review as [role]," fully adopt that perspective:
 
 | Role | Lens | Key Questions |
 |------|------|---------------|
-| **Engineer** | Feasibility | What's missing from the spec? Edge cases? Technical risks? |
-| **Designer** | Usability | Is the flow clear? Where do users get confused or drop off? |
-| **Executive** | Strategy | Does this align with OKRs? What's the ROI case? |
-| **Skeptic** | Risk | What could go wrong? What assumptions are untested? |
-| **Customer** | Value | Would I use this? What's confusing? Would I pay for this? |
-| **Data Analyst** | Measurement | Are metrics precise? Baselines documented? Instrumentation in place? |
+| **Engineer** | Feasibility | Missing from spec? Edge cases? Technical risks? |
+| **Designer** | Usability | Flow clear? Where do users drop off? |
+| **Executive** | Strategy | Aligned with OKRs? ROI case? |
+| **Skeptic** | Risk | What could go wrong? Untested assumptions? |
+| **Customer** | Value | Would I use this? Would I pay? |
+| **Data Analyst** | Measurement | Metrics precise? Baselines? Instrumentation? |
 
 ---
 
-## Behavior
+## Verification Sequence
 
-- Ask 3-5 clarifying questions before generating any deliverable. Never assume.
-- Default to short. If output exceeds 2 pages, ask if that depth is needed.
-- Flag missing info with `[NEED: data from X]` — never fabricate data, quotes, or metrics.
-- When I correct you, propose a new rule for this file so the mistake doesn't repeat. Wait for my approval before editing.
-- Use `/clear` proactively — suggest it when context is getting stale or tasks are unrelated.
-- Before ending a long session, offer to write a HANDOFF.md with current state, decisions, open questions, and next steps.
-- Reference files with `@path/to/file` instead of asking me to paste content. Keep the context window lean.
-- Use `Shift+Tab` (Plan Mode) automatically before multi-step or multi-file tasks. Outline the approach, wait for approval, then execute.
-- When a task has independent subtasks, run them in parallel using subagents. Don't serialize work that can be parallelized.
+For any deliverable, follow this order:
+1. Clarify — ask 3-5 questions before generating. Never assume.
+2. Draft — default short. Over 2 pages? Ask first.
+3. Self-review — check against the relevant skill's checklist and anti-patterns.
+4. Flag gaps — surface unknowns with `[NEED: ...]`, don't fill them with guesses.
 
 ---
 
-## Skills
+## Self-Improvement Protocol
 
-Task-specific workflows live in `.claude/skills/` and load on demand. This file stays lean — domain logic belongs in skills, not here.
+- When I correct you, immediately propose a rule for this file. Wait for approval before editing.
+- When you hit a recurring issue, propose a `.claude/rules/` file for it instead of bloating this file.
+- Every rule in this file must earn its place. If removing it wouldn't cause mistakes, it doesn't belong.
+
+---
+
+## Context Management
+
+- Suggest `/clear` when switching between unrelated tasks.
+- After ~40 exchanges, offer to write a HANDOFF.md (state, decisions, open questions, next steps) and restart.
+- Use `@path/to/file` to reference docs — never ask me to paste. Keep the context window lean.
+- Use Plan Mode (Shift+Tab) before multi-step tasks. Outline first, execute after approval.
+- Parallelize independent subtasks with subagents. Don't serialize what can run concurrently.
+
+---
+
+## Memory Architecture
+
+This file is one layer. The full system:
+
+```
+~/.claude/CLAUDE.md          → personal defaults (all projects)
+./CLAUDE.md                  → this file (project-level, shared via git)
+.claude/rules/*.md           → modular rules scoped by glob pattern
+.claude/skills/*/SKILL.md    → task workflows, loaded on demand
+```
+
+Domain knowledge → skills. Scoped rules → `.claude/rules/`. Universal behavior → this file.
 
 ---
 
 ## MCP Connections
 
 [FILL IN, e.g.:]
-- Notion: reading/writing product docs
-- Linear/Jira: creating and updating tickets
-- Slack: sending messages, reading channels
+- Notion: product docs
+- Linear/Jira: tickets
+- Slack: messaging
 
 ---
 
-> **Full PM OS:** 41+ skills, 7 sub-agent perspectives, context library, templates. [Get it →](https://www.news.aakashg.com/p/pm-os)
+> **Full PM OS:** 41+ skills, 7 sub-agents, context library, templates. [Get it →](https://www.news.aakashg.com/p/pm-os)
