@@ -51,15 +51,19 @@ Done. Claude now knows you're a PM, follows your writing style, and writes PRDs 
 
 ## What the CLAUDE.md Does
 
-`CLAUDE.md` gives Claude persistent context about:
+`CLAUDE.md` is mostly pre-configured with power-user techniques. A small section at the top has `[FILL IN]` fields for your specifics. The rest is ready to go:
 
-- **Your role and product** — so it doesn't ask "what do you do?" every session
-- **Your writing style** — direct, concise, no filler words
-- **Sub-agent roles** — say "review as engineer" or "review as skeptic" for different perspectives
-- **Power features** — @ references, Plan Mode, hooks, session handoffs, self-improving CLAUDE.md
-- **Context hygiene** — rules for `/clear`, handoffs, and parallel sessions
-
-Customize the `[FILL IN]` sections with your specifics.
+- **Your context** (fill in once) — role, product, metrics, OKRs, terminology
+- **Writing rules** — enforced tone, banned words, formatting standards
+- **Sub-agent roles** — 6 reviewers (engineer, designer, executive, skeptic, customer, data analyst) with chaining patterns
+- **Skills system** — progressive disclosure, auto-triggering, how to create your own
+- **@ references** — point to files instead of pasting them
+- **Plan Mode** — when to use Shift+Tab, when to skip
+- **Hooks** — guaranteed automation with exit codes, pre/post tool events
+- **Session management** — context hygiene, handoffs, parallel sessions
+- **Self-improving loop** — how CLAUDE.md gets smarter over time
+- **MCP connections** — native integrations with Notion, Jira, Slack, etc.
+- **Quick reference** — every command and shortcut in one block
 
 ## What the PRD Writer Skill Does
 
