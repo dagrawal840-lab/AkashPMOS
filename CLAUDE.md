@@ -89,4 +89,34 @@ Domain knowledge → skills. Scoped rules → `.claude/rules/`. Universal behavi
 
 ---
 
+
+# Technical Conventions
+- Stack: [e.g. TypeScript, Next.js, Tailwind]
+- Tests: __tests__/ mirroring src/
+- Commits: conventional commits
+- Deploys: [e.g. Vercel, preview on PR]
+
+# Current Focus
+[Update weekly]
+- Sprint goal: [what you're building this week]
+- Open prototypes: [list active experiments]
+- Blockers: [anything stuck]
+
+# Prototype Rules
+- Build fast, ship nothing without evaluation
+- "Options" means 3-5 divergent prototypes, not variations
+- Run tests before committing
+- Ask before deleting files
+- Never add features I didn't ask for
+
+# Evaluation Framework
+When I ask to evaluate a prototype, use the 5 Lenses:
+1. Problem-Solution Fit
+2. Interaction Cost
+3. Edge Case Exposure
+4. Technical Debt Signal
+5. Business Model Alignment
+Score each 1-5. Recommend: Ship / Iterate / Kill.
+
+
 > **Full PM OS:** 41+ skills, 7 sub-agents, context library, templates. [Get it →](https://www.news.aakashg.com/p/pm-os)
