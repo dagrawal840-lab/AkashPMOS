@@ -1,3 +1,8 @@
+# Wiki
+See @wiki/AGENTS.md for wiki operating rules.
+
+---
+
 # PM Context
 
 - Role: [FILL IN]
