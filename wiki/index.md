@@ -4,4 +4,5 @@
 > One line per page in `pages/` and `synthesis/`, grouped by category.
 > Summaries are plain text — no `[[links]]`.
 
-<!-- No pages compiled yet. Drop sources into raw/ and run Compile. -->
+## research
+- [[teamtask-mark-discovery-interview]] — Discovery interview with Mark, Digital Marketing Manager; core pain is lack of cross-team visibility during campaign launches, with adoption failure on prior PM tools as a key constraint.
