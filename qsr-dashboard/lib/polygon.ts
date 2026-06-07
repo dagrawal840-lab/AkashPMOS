@@ -11,7 +11,7 @@ function getApiKey(): string {
 }
 
 const QSR_TICKERS = ['YUM', 'MCD', 'CMG', 'SHAK', 'WEN', 'QSR'] as const;
-export type QSRTicker = typeof QSR_TICKERS[number];
+export type QSRTicker = (typeof QSR_TICKERS)[number];
 
 const TICKER_NAMES: Record<string, string> = {
   YUM: 'Yum Brands',
@@ -22,44 +22,97 @@ const TICKER_NAMES: Record<string, string> = {
   QSR: 'Restaurant Brands',
 };
 
-interface PolygonSnapshotResult {
-  ticker: string;
-  day?: { c?: number; o?: number };
-  prevDay?: { c?: number };
-  todaysChangePerc?: number;
-  todaysChange?: number;
+interface AggResult {
+  c: number; // close
+  o: number; // open
+  h: number; // high
+  l: number; // low
+  v: number; // volume
+  t: number; // timestamp
 }
 
-async function fetchTicker(ticker: string): Promise<PolygonSnapshotResult | null> {
-  const apiKey = getApiKey();
-  const url = `${BASE_URL}/v2/snapshot/locale/us/markets/stocks/tickers/${encodeURIComponent(ticker)}?apiKey=${apiKey}`;
+interface PolygonAggsResponse {
+  ticker: string;
+  results?: AggResult[];
+  status: string;
+}
 
-  const res = await fetch(url, { next: { revalidate: 300 } });
+// Free-tier endpoint: previous trading day close
+async function fetchPrevClose(ticker: string): Promise<{ ticker: string; close: number; open: number } | null> {
+  const apiKey = getApiKey();
+  const url = `${BASE_URL}/v2/aggs/ticker/${encodeURIComponent(ticker)}/prev?adjusted=true&apiKey=${apiKey}`;
+
+  const res = await fetch(url, { next: { revalidate: 3600 } });
   if (!res.ok) {
-    console.error(`Polygon fetch failed for ${ticker}: ${res.status}`);
+    console.error(`Polygon prev-close failed for ${ticker}: ${res.status}`);
     return null;
   }
 
-  const data = await res.json();
-  return data?.ticker ?? null;
+  const data: PolygonAggsResponse = await res.json();
+  const result = data.results?.[0];
+  if (!result) return null;
+
+  return { ticker, close: result.c, open: result.o };
+}
+
+// Two-day aggregates so we can compute day-over-day change
+async function fetchTwoDayAgg(ticker: string): Promise<{ ticker: string; price: number; change: number; changePercent: number } | null> {
+  const apiKey = getApiKey();
+  // Get last 2 trading days
+  const to = new Date();
+  const from = new Date();
+  from.setDate(from.getDate() - 5); // go back 5 calendar days to cover weekends
+  const fromStr = from.toISOString().slice(0, 10);
+  const toStr = to.toISOString().slice(0, 10);
+
+  const url = `${BASE_URL}/v2/aggs/ticker/${encodeURIComponent(ticker)}/range/1/day/${fromStr}/${toStr}?adjusted=true&sort=desc&limit=2&apiKey=${apiKey}`;
+
+  const res = await fetch(url, { next: { revalidate: 3600 } });
+  if (!res.ok) {
+    console.error(`Polygon aggs failed for ${ticker}: ${res.status}`);
+    return null;
+  }
+
+  const data: PolygonAggsResponse = await res.json();
+  const results = data.results;
+  if (!results || results.length === 0) return null;
+
+  const latest = results[0];
+  const prev = results[1];
+
+  const price = latest.c;
+  const prevClose = prev?.c ?? latest.o;
+  const change = price - prevClose;
+  const changePercent = prevClose ? (change / prevClose) * 100 : 0;
+
+  return { ticker, price, change, changePercent };
 }
 
 async function fetchBTC(): Promise<{ price: number; change: number; changePercent: number } | null> {
   const apiKey = getApiKey();
-  const url = `${BASE_URL}/v2/snapshot/locale/global/markets/crypto/tickers/X:BTCUSD?apiKey=${apiKey}`;
+  const to = new Date();
+  const from = new Date();
+  from.setDate(from.getDate() - 3);
+  const fromStr = from.toISOString().slice(0, 10);
+  const toStr = to.toISOString().slice(0, 10);
 
-  const res = await fetch(url, { next: { revalidate: 300 } });
+  const url = `${BASE_URL}/v2/aggs/ticker/X:BTCUSD/range/1/day/${fromStr}/${toStr}?adjusted=true&sort=desc&limit=2&apiKey=${apiKey}`;
+
+  const res = await fetch(url, { next: { revalidate: 3600 } });
   if (!res.ok) {
-    console.error(`Polygon BTC fetch failed: ${res.status}`);
+    console.error(`Polygon BTC aggs failed: ${res.status}`);
     return null;
   }
 
-  const data = await res.json();
-  const t = data?.ticker;
-  if (!t) return null;
+  const data: PolygonAggsResponse = await res.json();
+  const results = data.results;
+  if (!results || results.length === 0) return null;
 
-  const price = t.day?.c ?? t.lastTrade?.p ?? 0;
-  const prevClose = t.prevDay?.c ?? 0;
+  const latest = results[0];
+  const prev = results[1];
+
+  const price = latest.c;
+  const prevClose = prev?.c ?? latest.o;
   const change = price - prevClose;
   const changePercent = prevClose ? (change / prevClose) * 100 : 0;
 
@@ -68,7 +121,7 @@ async function fetchBTC(): Promise<{ price: number; change: number; changePercen
 
 export async function getMarketData() {
   const [tickerResults, btc] = await Promise.allSettled([
-    Promise.all(QSR_TICKERS.map(fetchTicker)),
+    Promise.all(QSR_TICKERS.map(fetchTwoDayAgg)),
     fetchBTC(),
   ]);
 
@@ -76,12 +129,12 @@ export async function getMarketData() {
   const btcData = btc.status === 'fulfilled' ? btc.value : null;
 
   const quotes = rawTickers
-    .filter((t): t is PolygonSnapshotResult => t !== null)
+    .filter((t): t is NonNullable<typeof t> => t !== null)
     .map((t) => ({
       ticker: t.ticker,
-      price: t.day?.c ?? 0,
-      change: t.todaysChange ?? 0,
-      changePercent: t.todaysChangePerc ?? 0,
+      price: t.price,
+      change: t.change,
+      changePercent: t.changePercent,
       name: TICKER_NAMES[t.ticker] ?? t.ticker,
     }));
 
