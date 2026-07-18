@@ -1,0 +1,16 @@
+# Zendesk export — tickets tagged 'onboarding', week of 2026-06-29 to 2026-07-05
+# Exported 2026-07-06 09:02 UTC. 4-week avg volume: 12 tickets/week.
+ticket_id,created_at,requester,subject,tags,excerpt
+48211,2026-06-29,mchen@lumenpay.io,Can't verify email,"onboarding,email","Verification link expired before I clicked it, had to resend twice."
+48226,2026-06-30,d.okafor@brightfleet.com,Where do I add teammates?,"onboarding,invite-team","Couldn't find the invite button, turns out it's under Settings."
+48240,2026-06-30,sara.lindqvist@nordbyte.se,Postgres connection setup unclear,"onboarding,connect-data,confusing-setup","The connection wizard asks for a schema name but doesn't say which one. Setup is confusing."
+48251,2026-07-01,jtan@parcelmetrics.co,Workspace name taken?,"onboarding,workspace","Said my workspace name was taken but it's our company name."
+48263,2026-07-02,anna.r@velodyne-labs.com,Snowflake credentials rejected,"onboarding,connect-data","Kept getting 'invalid credentials' with a working service account."
+48270,2026-07-02,p.mehta@quivertrade.in,Trial question,"onboarding,billing","Does the trial include SSO?"
+48281,2026-07-03,liam.oc@ferrishealth.com,Confusing setup wizard,"onboarding,connect-data,confusing-setup","Step 4 setup wizard is confusing — no idea what a 'read replica endpoint' is."
+48290,2026-07-03,k.yamada@torii.jp,Invite emails in spam,"onboarding,invite-team","Teammates' invites landed in spam folder."
+48302,2026-07-04,rgutierrez@solaravia.mx,How to skip dashboard tutorial,"onboarding,dashboard","Tutorial can't be dismissed on Safari."
+48311,2026-07-04,felix.b@copperline.de,Data source dropdown empty,"onboarding,connect-data,confusing-setup","The data source type dropdown was empty until I refreshed. Very confusing setup."
+48319,2026-07-05,htran@meadowfin.com,Verify email resend limit,"onboarding,email","Hit resend limit after 3 tries."
+48325,2026-07-05,olivia.p@stackharbor.io,General onboarding feedback,"onboarding","Overall smooth, but the connect step took me 20 minutes."
+48331,2026-07-05,n.abadi@zephyrops.com,Which permissions for BigQuery?,"onboarding,connect-data","Docs don't list the exact IAM roles needed."

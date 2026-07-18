@@ -1,0 +1,7 @@
+metric,value,unit
+signups,431,count
+activation_rate,34.6,pct
+checkout_conversion,3.31,pct
+api_error_rate,0.51,pct
+dau,5903,count
+p95_latency,418,ms

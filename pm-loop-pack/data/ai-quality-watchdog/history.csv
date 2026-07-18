@@ -1,0 +1,8 @@
+date,examples_run,passed,pass_rate,failed_ids,notes
+2026-07-09,30,27,90.0,EX-004;EX-012;EX-029,slack integration answer stale after helpdoc update
+2026-07-10,30,26,86.7,EX-012;EX-022;EX-024;EX-029,EX-022 omitted AES-256 (said "industry-standard encryption")
+2026-07-11,30,27,90.0,EX-004;EX-019;EX-024,EX-019 truncated once; passed on other nights
+2026-07-12,30,28,93.3,EX-022;EX-029,
+2026-07-13,30,26,86.7,EX-004;EX-007;EX-012;EX-024,EX-007 first claimed Enterprise free trial (gpt-shim v2.4.1 prompt edit shipped 07-13)
+2026-07-14,30,27,90.0,EX-007;EX-012;EX-029,EX-007 free-trial claim again
+2026-07-15,30,26,86.7,EX-007;EX-022;EX-024;EX-029,EX-007 free-trial claim third night

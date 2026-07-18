@@ -1,0 +1,9 @@
+# 8-week rolling baseline (weeks of 2026-05-04 through 2026-06-28)
+# Generated 2026-07-13 04:15 UTC by growth-etl v2.3
+step,step_order,baseline_dropoff_pct
+Create account,1,15.1
+Verify email,2,10.6
+Create workspace,3,8.4
+Connect data source,4,14.5
+Invite team,5,41.5
+Build first dashboard,6,15.8

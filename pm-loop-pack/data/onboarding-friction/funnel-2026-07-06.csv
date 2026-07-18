@@ -1,0 +1,9 @@
+# Amplitude export — onboarding funnel, week of 2026-07-06 to 2026-07-12
+# Generated 2026-07-13 04:11 UTC by growth-etl v2.3
+step,step_order,entries,completions
+Create account,1,5093,4348
+Verify email,2,4348,3899
+Create workspace,3,3899,3572
+Connect data source,4,3572,2886
+Invite team,5,2886,1652
+Build first dashboard,6,1652,1394

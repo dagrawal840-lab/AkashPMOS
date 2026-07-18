@@ -1,0 +1,11 @@
+response_id,date,score,customer,respondent_role,verbatim
+NPS-9102,2026-07-13,3,Crestline Bank,Operations Manager,"Product does the job but performance has fallen off a cliff. Our morning dashboard review meeting now starts with two minutes of watching spinners."
+NPS-9103,2026-07-13,9,Brightwater Farms,Owner,"Love it overall. One ask: let me export reports with our own column order. Right now I re-export three times to get the CSV our co-op wants and half the time a column I need is missing."
+NPS-9104,2026-07-14,4,Northwind Textiles,Ops Lead,"The roles and permissions system is genuinely confusing. I gave feedback via support too. I never know what a role can actually do until someone gets blocked mid-task."
+NPS-9105,2026-07-14,8,Copperline Manufacturing,Plant Manager,"Great for scheduling. Watch out for the export row limit though, it bit us badly this month."
+NPS-9106,2026-07-15,6,Kestrel Insurance,IT Director,"Would score higher but our rollout is blocked on permissions mapping. Your role model doesn't fit how an insurance org works and there's no documentation deep enough to bridge it."
+NPS-9107,2026-07-15,10,Solstice Travel,Founder,"Once I got past the confusing first week, this replaced three tools for us."
+NPS-9108,2026-07-16,7,Quill Publishing,Managing Editor,"Mostly good. The mobile app has been crashy for our field reporters this week which is why I docked points."
+NPS-9109,2026-07-16,2,Halcyon Legal,Managing Partner,"A paralegal being able to delete a client matter is disqualifying for a legal product. We are evaluating alternatives unless the permissions model gets serious."
+NPS-9110,2026-07-17,9,Juniper Robotics,Engineering Manager,"Great product. My only friction this month was permissions — onboarding a new engineer took two days of access whack-a-mole."
+NPS-9111,2026-07-17,5,Osprey Nonprofit Alliance,Program Director,"Could you offer discounted pricing for registered nonprofits? That is the only thing keeping my score at 5. Also do you sponsor community hackathons?"

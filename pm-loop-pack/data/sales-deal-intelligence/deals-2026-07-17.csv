@@ -1,0 +1,13 @@
+deal_id,account,segment,stage,amount,close_date,owner_ae,competitor,crm_next_step
+NW-1044,Ridgeway Haulage,Mid-market 3PL,Closed Lost,72000,2026-07-13,Rachel Kim,Cortexa,
+NW-1046,Petrel Shipping,Mid-market shipper,Closed Won,98000,2026-07-14,Diego Fuentes,FreightIQ,
+NW-1048,Lantern Freight,Mid-market carrier,Closed Lost,55000,2026-07-15,Marcus Hale,Cortexa,
+NW-1049,Dunmore Carriers,SMB carrier,Closed Won,41000,2026-07-16,Priya Shah,,
+NW-1050,Veltri Bros Trucking,Mid-market carrier,Closed Lost,67000,2026-07-16,Rachel Kim,Cortexa,
+NW-1063,Quayside Logistics,SMB 3PL,Closed Lost,28000,2026-07-17,Marcus Hale,,marked lost in CRM by ops cleanup - no loss reason entered
+NW-1051,Tallgrass Carriers,Mid-market carrier,Evaluation,64000,2026-08-21,Rachel Kim,Cortexa,technical deep-dive on webhook latency Tue 7/21
+NW-1054,Bluewater Freight,Enterprise shipper,Negotiation,120000,2026-08-07,Diego Fuentes,FreightIQ,security review call w/ their IT 7/22
+NW-1057,Copperline 3PL,SMB 3PL,Discovery,45000,2026-09-11,Priya Shah,,demo #2 scheduled 7/24
+NW-1058,Harbor & Main Shipping,Mid-market shipper,Evaluation,88000,2026-08-28,Marcus Hale,Dockwise,follow up on McLeod connector question
+NW-1060,Sable Transport,Enterprise carrier,Negotiation,150000,2026-07-31,Diego Fuentes,Cortexa,pricing counter due EOW
+NW-1062,Kite Logistics,SMB carrier,Discovery,30000,2026-09-25,Priya Shah,,intro call held 7/16 - notes pending

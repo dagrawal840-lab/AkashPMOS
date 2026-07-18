@@ -1,0 +1,177 @@
+{
+  "export": "next-sprint candidate filter",
+  "project": "CORE — Relay (B2B SaaS workspace platform)",
+  "exported_at": "2026-07-21T09:00:00Z",
+  "sprint": "Sprint 42",
+  "tickets": [
+    {
+      "id": "CORE-1841",
+      "title": "CSV import: file upload step with 10MB limit",
+      "type": "Story",
+      "assignee": "Lena Fischer",
+      "estimate": 3,
+      "status": "Ready for dev",
+      "acceptance_criteria": "1. Admin can upload .csv up to 10MB from Settings > Members > Import. 2. Non-CSV files rejected with inline error 'Only .csv files are supported'. 3. Upload over 10MB rejected client-side before request is sent. 4. Successful upload advances to the mapping step.",
+      "blocked_by": [],
+      "spec_link": "https://notion.so/relay/csv-import-upload-spec-v3",
+      "spec_link_status": "200 OK, last edited 2026-07-15",
+      "comments": []
+    },
+    {
+      "id": "CORE-1842",
+      "title": "CSV import: column mapping UI",
+      "type": "Story",
+      "assignee": "Lena Fischer",
+      "estimate": 5,
+      "status": "Ready for dev",
+      "acceptance_criteria": "1. Auto-map columns whose header matches a Relay field name (case-insensitive). 2. Unmapped required fields (email, role) block the Continue button with message 'Map all required fields to continue'. 3. Mapping choices persist if the admin goes back to the upload step.",
+      "blocked_by": [],
+      "spec_link": "https://figma.com/file/relay-import-mapping-v2",
+      "spec_link_status": "200 OK, last edited 2026-07-17",
+      "comments": [
+        {
+          "author": "Tomás Rivera",
+          "date": "2026-07-16",
+          "body": "Design reviewed with Lena, matches Figma v2. Good to go."
+        }
+      ]
+    },
+    {
+      "id": "CORE-1843",
+      "title": "CSV import: inline validation errors on bad rows",
+      "type": "Story",
+      "assignee": "Priya Raman",
+      "estimate": 5,
+      "status": "Ready for dev",
+      "acceptance_criteria": "",
+      "blocked_by": [],
+      "spec_link": "https://notion.so/relay/csv-import-validation-spec",
+      "spec_link_status": "200 OK, last edited 2026-07-14",
+      "comments": [
+        {
+          "author": "Priya Raman",
+          "date": "2026-07-15",
+          "body": "Spec covers the error taxonomy; will write AC from it before planning."
+        }
+      ]
+    },
+    {
+      "id": "CORE-1844",
+      "title": "CSV import: post-import summary email",
+      "type": "Story",
+      "assignee": "Dana Okafor",
+      "estimate": null,
+      "status": "Ready for dev",
+      "acceptance_criteria": "1. Email sent to the importing admin within 5 minutes of import completion. 2. Email lists rows imported, rows skipped, and a link to the skipped-rows report. 3. Uses the existing transactional template (no new template work).",
+      "blocked_by": [],
+      "spec_link": "https://notion.so/relay/import-summary-email-spec",
+      "spec_link_status": "200 OK, last edited 2026-07-13",
+      "comments": []
+    },
+    {
+      "id": "CORE-1845",
+      "title": "CSV import: dedupe against existing members by email",
+      "type": "Story",
+      "assignee": "Miguel Torres",
+      "estimate": 3,
+      "status": "Ready for dev",
+      "acceptance_criteria": "1. Rows whose email matches an existing active member are skipped and counted in the summary. 2. Rows matching a deactivated member prompt 'Reactivate 12 deactivated members?' with confirm/skip. 3. Matching is case-insensitive on email.",
+      "blocked_by": ["CORE-1790"],
+      "blocked_by_status": {
+        "CORE-1790": "Members service email-index migration — In Progress, target Jul 24"
+      },
+      "spec_link": "https://notion.so/relay/csv-import-dedupe-spec",
+      "spec_link_status": "200 OK, last edited 2026-07-16",
+      "comments": [
+        {
+          "author": "Miguel Torres",
+          "date": "2026-07-17",
+          "body": "Can't start until the email-index migration (CORE-1790) lands — matching queries time out on large workspaces without it."
+        }
+      ]
+    },
+    {
+      "id": "CORE-1846",
+      "title": "CSV import: audit-log entries for import events",
+      "type": "Story",
+      "assignee": "Dana Okafor",
+      "estimate": 2,
+      "status": "Ready for dev",
+      "acceptance_criteria": "1. One audit-log entry per import: actor, timestamp, filename, rows imported/skipped. 2. Entry visible in Settings > Audit Log within 1 minute. 3. Entries are immutable.",
+      "blocked_by": [],
+      "spec_link": "https://notion.so/relay/audit-log-import-events-DRAFT-old",
+      "spec_link_status": "404 Not Found — page was archived 2026-06-30 in the Notion workspace cleanup",
+      "comments": []
+    },
+    {
+      "id": "CORE-1847",
+      "title": "Import error page: empty-file and encoding edge cases",
+      "type": "Story",
+      "assignee": "Priya Raman",
+      "estimate": 2,
+      "status": "Ready for dev",
+      "acceptance_criteria": "1. Empty file shows 'This file has no rows to import'. 2. Non-UTF-8 files are detected and shown 'Unsupported encoding — save the file as UTF-8 and retry'. 3. Both states are recoverable without restarting the flow.",
+      "blocked_by": [],
+      "spec_link": "https://notion.so/relay/csv-import-validation-spec",
+      "spec_link_status": "200 OK, last edited 2026-07-14",
+      "comments": [
+        {
+          "author": "Sam Whitfield",
+          "date": "2026-07-18",
+          "body": "Open question: do we detect UTF-16 specifically or just reject anything non-UTF-8? Support says Excel-on-Windows exports UTF-16 constantly. Needs a decision before we build."
+        }
+      ]
+    },
+    {
+      "id": "CORE-1848",
+      "title": "Rate-limit import jobs per workspace",
+      "type": "Story",
+      "assignee": "Miguel Torres",
+      "estimate": 3,
+      "status": "Ready for dev",
+      "acceptance_criteria": "1. Max 3 concurrent import jobs per workspace; 4th attempt queues with banner 'Import queued — 2 ahead of you'. 2. Queued jobs start automatically in order. 3. Limit configurable via server flag, default 3.",
+      "blocked_by": [],
+      "spec_link": "https://notion.so/relay/import-rate-limit-spec",
+      "spec_link_status": "200 OK, last edited 2026-07-16",
+      "comments": []
+    },
+    {
+      "id": "CORE-1812",
+      "title": "Fix: member list pagination skips page 2 after role filter",
+      "type": "Bug",
+      "assignee": "Lena Fischer",
+      "estimate": 1,
+      "status": "Ready for dev",
+      "acceptance_criteria": "1. Applying a role filter then paging shows pages 1..N with no skips. 2. Regression test covers filter + paginate combination.",
+      "blocked_by": [],
+      "spec_link": null,
+      "spec_link_status": "n/a — bug fix, repro steps in ticket",
+      "comments": [
+        {
+          "author": "Sam Whitfield",
+          "date": "2026-07-10",
+          "body": "Repro confirmed on staging, video attached."
+        }
+      ]
+    },
+    {
+      "id": "CORE-1799",
+      "title": "Spike: evaluate background-job library for import pipeline",
+      "type": "Spike",
+      "assignee": "Tomás Rivera",
+      "estimate": null,
+      "status": "Ready for dev",
+      "acceptance_criteria": "",
+      "blocked_by": [],
+      "spec_link": null,
+      "spec_link_status": "n/a — spike",
+      "comments": [
+        {
+          "author": "Tomás Rivera",
+          "date": "2026-07-14",
+          "body": "Is this still needed if we keep the existing worker pool? Asked in #eng-platform, no answer yet."
+        }
+      ]
+    }
+  ]
+}

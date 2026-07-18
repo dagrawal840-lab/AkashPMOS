@@ -1,0 +1,11 @@
+review_id,date,store,rating,reviewer,company,review_text
+AR-3301,2026-07-13,App Store,2,ridgeline_ops,Ridgeline Outdoors,"Used to love it. Now the dashboard takes half a minute to load every morning while my coffee gets cold. Fix the speed and I'll change this to 5 stars."
+AR-3302,2026-07-13,Google Play,1,warehouse_carlos,Petra Foods,"4.12.1 crashes constantly during scan sessions. Unusable in the warehouse. Reverted to old version."
+AR-3303,2026-07-14,App Store,3,thistlethread_amy,Thistle & Thread,"Nice product once you're in, but the first-week experience is rough. Took me three days to figure out how to invite my team and import products. Needs a real getting-started guide."
+AR-3304,2026-07-14,Google Play,4,nimbus_admin,Nimbus SaaS,"Solid feature set. Only gripe: the main dashboard has gotten noticeably slower over the last month, ~20 seconds on our account."
+AR-3305,2026-07-15,App Store,2,lumen_optics_fin,Lumen Optics,"Billing is a mess. Got invoiced for seats we removed in June. Support fixed it but it shouldn't happen."
+AR-3306,2026-07-15,Google Play,5,soloconsultant_kb,,"Perfect for my one-person consultancy. Zero complaints."
+AR-3307,2026-07-16,App Store,1,mosaic_frontdesk,Mosaic Charter Schools,"Calendar tab crashes the iPad app every single time since the update. Front office staff back to paper."
+AR-3308,2026-07-16,Google Play,3,tallgrass_kd,Tallgrass Energy,"Good tool but dashboards are getting slower every release. 25s load on a fast office connection is not okay."
+AR-3309,2026-07-16,App Store,2,anon_pm_2287,,"Why is there no way to see the app in landscape on tablet? Also your mascot is creepy."
+AR-3310,2026-07-17,Google Play,4,maplegrove_treasurer,Maple Grove HOA,"Does what we need. Setup was confusing though — the wizard assumes you have an IT person. We're an HOA, we don't."
